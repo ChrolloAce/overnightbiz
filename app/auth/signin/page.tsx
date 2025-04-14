@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
+import { signIn } from 'next-auth/react';
 import { FcGoogle } from 'react-icons/fc';
 
 export default function SignIn() {
   const handleGoogleSignIn = () => {
-    // Placeholder for Google sign-in - would normally redirect to Google OAuth
-    window.location.href = '/';
+    signIn('google', { callbackUrl: '/' });
   };
 
   return (

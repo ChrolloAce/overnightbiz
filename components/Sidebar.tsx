@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { FiHome, FiUsers, FiSettings, FiActivity, FiFolder, FiLogOut, FiBriefcase } from 'react-icons/fi';
+import { signOut } from 'next-auth/react';
 
 const Sidebar = () => {
   const handleLogout = () => {
-    // Placeholder for logout functionality
-    window.location.href = '/auth/signin';
+    signOut({ callbackUrl: '/auth/signin' });
   };
 
   return (
