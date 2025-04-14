@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
+import React, { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
-import { getBusinessProfiles } from '@/lib/googleBusinessProfile';
 
 interface BusinessProfile {
   name: string;
@@ -24,29 +22,82 @@ interface BusinessProfile {
   };
 }
 
-export default function BusinessProfilesPage() {
-  const { data: session } = useSession({ required: true });
-  const [profiles, setProfiles] = useState<BusinessProfile[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchProfiles() {
-      if (session?.accessToken) {
-        try {
-          const profilesData = await getBusinessProfiles(session.accessToken);
-          setProfiles(profilesData);
-          setLoading(false);
-        } catch (err) {
-          setError('Failed to fetch business profiles');
-          setLoading(false);
-          console.error(err);
-        }
-      }
+// Mock business profiles data
+const mockProfiles: BusinessProfile[] = [
+  {
+    name: "accounts/123456789/locations/1",
+    locationName: "AMERICAN GLOBAL CONSTRUCTION LLC",
+    primaryPhone: "+1 (305) 555-1234",
+    websiteUri: "https://example.com/construction",
+    address: {
+      addressLines: ["5201 waterford drive"],
+      locality: "Miami",
+      administrativeArea: "FL",
+      postalCode: "33126",
+      region: "United States"
+    },
+    state: {
+      verificationState: "VERIFIED",
+      isDisabled: false
     }
+  },
+  {
+    name: "accounts/123456789/locations/2",
+    locationName: "Best Quality Concrete Corp",
+    primaryPhone: "+1 (954) 555-6789",
+    websiteUri: "https://example.com/concrete",
+    address: {
+      addressLines: ["123 Main Street"],
+      locality: "Hollywood",
+      administrativeArea: "FL",
+      postalCode: "33021",
+      region: "United States"
+    },
+    state: {
+      verificationState: "VERIFIED",
+      isDisabled: false
+    }
+  },
+  {
+    name: "accounts/123456789/locations/3",
+    locationName: "Costello event productions",
+    primaryPhone: "+1 (317) 555-9876",
+    websiteUri: "https://example.com/events",
+    address: {
+      addressLines: ["456 Production Ave"],
+      locality: "Indianapolis",
+      administrativeArea: "IN",
+      postalCode: "46204",
+      region: "United States"
+    },
+    state: {
+      verificationState: "VERIFIED",
+      isDisabled: false
+    }
+  },
+  {
+    name: "accounts/123456789/locations/4",
+    locationName: "Creative Custom Carpentry of SWFL",
+    primaryPhone: "+1 (239) 555-4321",
+    websiteUri: "https://example.com/carpentry",
+    address: {
+      addressLines: ["789 Craft Street"],
+      locality: "Fort Myers",
+      administrativeArea: "FL",
+      postalCode: "33901",
+      region: "United States"
+    },
+    state: {
+      verificationState: "VERIFIED",
+      isDisabled: false
+    }
+  }
+];
 
-    fetchProfiles();
-  }, [session]);
+export default function BusinessProfilesPage() {
+  const [profiles] = useState<BusinessProfile[]>(mockProfiles);
+  const [loading] = useState(false);
+  const [error] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-gray-50">

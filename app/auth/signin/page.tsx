@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { FcGoogle } from 'react-icons/fc';
 
 export default function SignIn() {
   const handleGoogleSignIn = () => {
-    window.location.href = '/api/auth/signin/google';
+    // Placeholder for Google sign-in - would normally redirect to Google OAuth
+    window.location.href = '/';
   };
 
   return (

@@ -5,7 +5,7 @@ import { FiHome, FiUsers, FiSettings, FiActivity, FiFolder, FiLogOut, FiBriefcas
 const Sidebar = () => {
   const handleLogout = () => {
     // Placeholder for logout functionality
-    window.location.href = '/api/auth/signout';
+    window.location.href = '/auth/signin';
   };
 
   return (
