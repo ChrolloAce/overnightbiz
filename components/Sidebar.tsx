@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { FiHome, FiUsers, FiSettings, FiActivity, FiFolder, FiLogOut } from 'react-icons/fi';
+import { FiHome, FiUsers, FiSettings, FiActivity, FiFolder, FiLogOut, FiBriefcase } from 'react-icons/fi';
+import { signOut } from 'next-auth/react';
 
 const Sidebar = () => {
   return (
@@ -24,10 +25,16 @@ const Sidebar = () => {
                 <span>Dashboard</span>
               </div>
             </Link>
+            <Link href="/business-profiles">
+              <div className="flex items-center text-gray-700 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100 hover:text-primary">
+                <FiBriefcase className="h-5 w-5 mr-3" />
+                <span>Business Profiles</span>
+              </div>
+            </Link>
             <Link href="/profiles">
               <div className="flex items-center text-gray-700 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100 hover:text-primary">
                 <FiUsers className="h-5 w-5 mr-3" />
-                <span>Profiles</span>
+                <span>User Profiles</span>
               </div>
             </Link>
             <Link href="/activities">
@@ -59,7 +66,10 @@ const Sidebar = () => {
       </nav>
       
       <div className="absolute bottom-0 w-full p-4 border-t border-gray-100">
-        <button className="flex items-center text-gray-700 py-2.5 px-4 w-full rounded transition duration-200 hover:bg-gray-100 hover:text-primary">
+        <button 
+          onClick={() => signOut({ callbackUrl: '/auth/signin' })}
+          className="flex items-center text-gray-700 py-2.5 px-4 w-full rounded transition duration-200 hover:bg-gray-100 hover:text-primary"
+        >
           <FiLogOut className="h-5 w-5 mr-3" />
           <span>Logout</span>
         </button>
