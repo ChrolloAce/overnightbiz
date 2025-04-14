@@ -1,8 +1,9 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
 import React from 'react';
 
+// This is a placeholder for the SessionProvider which will be added at runtime
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <SessionProvider>{children}</SessionProvider>;
+  // SessionProvider would normally go here
+  return <>{children}</>;
 } 

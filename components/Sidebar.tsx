@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { FiHome, FiUsers, FiSettings, FiActivity, FiFolder, FiLogOut, FiBriefcase } from 'react-icons/fi';
-import { signOut } from 'next-auth/react';
 
 const Sidebar = () => {
+  const handleLogout = () => {
+    // Placeholder for logout functionality
+    window.location.href = '/api/auth/signout';
+  };
+
   return (
     <div className="bg-white shadow-lg w-64 h-screen fixed left-0 top-0">
       <div className="p-6 flex items-center space-x-3">
@@ -67,7 +71,7 @@ const Sidebar = () => {
       
       <div className="absolute bottom-0 w-full p-4 border-t border-gray-100">
         <button 
-          onClick={() => signOut({ callbackUrl: '/auth/signin' })}
+          onClick={handleLogout}
           className="flex items-center text-gray-700 py-2.5 px-4 w-full rounded transition duration-200 hover:bg-gray-100 hover:text-primary"
         >
           <FiLogOut className="h-5 w-5 mr-3" />
