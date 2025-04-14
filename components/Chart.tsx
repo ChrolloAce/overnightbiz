@@ -41,9 +41,6 @@ const ActivityChart: React.FC = () => {
     scales: {
       y: {
         beginAtZero: true,
-        grid: {
-          drawBorder: false,
-        },
       },
       x: {
         grid: {
