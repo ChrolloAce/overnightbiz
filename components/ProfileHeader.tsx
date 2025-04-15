@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { FiEdit, FiMapPin, FiLink } from 'react-icons/fi';
 
 interface User {
-  name?: string;
-  email?: string;
-  image?: string;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
 }
 
 interface ProfileHeaderProps {
