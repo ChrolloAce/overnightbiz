@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import ProfileHeader from '@/components/ProfileHeader';
-import ReviewsSection from '@/components/ReviewsSection';
-import StatisticsCard from '@/components/StatisticsCard';
-import PostsSection from '@/components/PostsSection';
-import InsightsSection from '@/components/InsightsSection';
+import ProfileHeader from '../../components/ProfileHeader';
+import ReviewsSection from '../../components/ReviewsSection';
+import StatisticsCard from '../../components/StatisticsCard';
+import PostsSection from '../../components/PostsSection';
+import InsightsSection from '../../components/InsightsSection';
 import { redirect } from 'next/navigation';
-import Sidebar from '@/components/Sidebar';
-import Header from '@/components/Header';
+import Sidebar from '../../components/Sidebar';
+import Header from '../../components/Header';
 
 interface User {
   name?: string | null;
